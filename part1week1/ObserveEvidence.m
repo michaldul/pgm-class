@@ -40,6 +40,11 @@ for i = 1:size(E, 1),
             %       and SetValueOfAssignment
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             
+            assignment = IndexToAssignment(1:prod(F(j).card), F(j).card);
+            v_column = assignment(:, find(F(j).var == v));
+            v_positions = find(v_column != x);
+            F(j) = SetValueOfAssignment(F(j), assignment(v_positions, :), 0);
+            
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 				% Check validity of evidence / resulting factor
